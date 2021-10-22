@@ -1,0 +1,5 @@
+#form-container {
+  width: 22rem;
+  display: flex;
+  flex-direction: column;
+}

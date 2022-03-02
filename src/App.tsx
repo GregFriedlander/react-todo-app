@@ -1,24 +1,16 @@
-import React, { useState } from 'react';
-import './App.css';
-import CreateTaskComponent from './components/CreateTaskComponent';
-import TaskBoardComponent from './components/TaskBoardComponent';
-import TaskContext, { initialState, Task } from './store';
+import React from "react";
+import "./App.css";
+import CreateTaskComponent from "./components/CreateTaskComponent";
+import TaskBoardComponent from "./components/TaskBoardComponent";
+import { TaskProvider } from "./TaskContext";
 
 function App() {
-  /*
-  * As this grew it would move out of app comp
-  * */
-  const [tasks, setTasks] = useState<Task[]>(initialState);
-
   return (
-    <div>
-      <h1>To Do List</h1>
-      <div id='main-container'>
-        <TaskContext.Provider value={tasks}>
-          <CreateTaskComponent tasks={tasks} setTasks={setTasks}/>
-          <TaskBoardComponent/>
-        </TaskContext.Provider>
-      </div>
+    <div id="main-container">
+      <TaskProvider>
+        <CreateTaskComponent />
+        <TaskBoardComponent />
+      </TaskProvider>
     </div>
   );
 }
